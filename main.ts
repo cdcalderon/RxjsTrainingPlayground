@@ -15,7 +15,7 @@ let source = Observable.create(observer => {
     }
   }
   produceValue();
-})
+}).map(n => n * 2);
 
 
 source.subscribe(
