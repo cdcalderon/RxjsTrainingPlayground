@@ -1,17 +1,11 @@
 import { Observable } from 'rxjs';
 
-let button = document.getElementById("button");
-let click = Observable.fromEvent(button, "click");
+const startButton = document.querySelector('#start');
 
+Observable.fromEvent(startButton, 'click')
+    .subscribe((event) => {
+        console.log(event);
+    });
 
-let readyPlayground = () => {
-  return 'ready Playground';
-};
-
-let test = `${readyPlayground()}`;
-
-click.subscribe(
-    () => console.log(test),
-        (e) => console.log(`error ${e}`),
-        () => console.log("complete")
-    );
+Observable.interval(1000)
+    .subscribe((x) => console.log(x));
