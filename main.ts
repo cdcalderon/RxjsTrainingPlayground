@@ -11,6 +11,9 @@ const interval$ = Observable.interval(1000);
 const startInterval$ = start$
     .switchMapTo(interval$);
 
+const stopInterval$ = stop$
+    .switchMapTo(interval$);
+
 startInterval$
     .subscribe((x) => console.log(x));
 
