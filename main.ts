@@ -8,13 +8,12 @@ const stop$ = Observable.fromEvent(stopButton, 'click');
 
 const interval$ = Observable.interval(1000);
 
+const intervalThatStops$ = interval$
+    .takeUntil(stop$);
+
 const startInterval$ = start$
-    .switchMapTo(interval$);
+    .switchMapTo(intervalThatStops$)
+    .subscribe((x)=> console.log(x));
 
-const stopInterval$ = stop$
-    .switchMapTo(interval$);
-
-startInterval$
-    .subscribe((x) => console.log(x));
 
 
