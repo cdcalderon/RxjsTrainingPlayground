@@ -13,6 +13,9 @@ const intervalThatStops$ = interval$
 
 const startInterval$ = start$
     .switchMapTo(intervalThatStops$)
+    .scan((acc)=> {
+        return {count: acc.count + 1}
+    }, {count:0})
     .subscribe((x)=> console.log(x));
 
 
